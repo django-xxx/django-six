@@ -25,6 +25,20 @@ except ImportError:
     MiddlewareMixin = object
 
 
+# ValuesQuerySet and ValuesListQuerySet have been removed.
+# https://docs.djangoproject.com/en/1.9/releases/1.9/#miscellaneous
+try:
+    from django.db.models.query import ValuesQuerySet
+    Support_ValuesQuerySet = True
+except ImportError:
+    Support_ValuesQuerySet = False
+try:
+    from django.db.models.query import ValuesListQuerySet
+    Support_ValuesListQuerySet = True
+except ImportError:
+    Support_ValuesListQuerySet = False
+
+
 # BaseCommand Series
 class ProxyParser(object):
     """Faux parser object that will ferry our arguments into options."""
