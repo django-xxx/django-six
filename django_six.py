@@ -31,11 +31,13 @@ try:
     from django.db.models.query import ValuesQuerySet
     Support_ValuesQuerySet = True
 except ImportError:
+    ValuesQuerySet = type
     Support_ValuesQuerySet = False
 try:
     from django.db.models.query import ValuesListQuerySet
     Support_ValuesListQuerySet = True
 except ImportError:
+    ValuesListQuerySet = type
     Support_ValuesListQuerySet = False
 
 
