@@ -11,7 +11,8 @@ setup(
     version=version,
     keywords='django-six',
     description='Django-six —— Django Compatibility Library',
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
 
     url='https://github.com/Brightcells/django-six',
 

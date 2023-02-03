@@ -41,6 +41,23 @@ except ImportError:
     Support_ValuesListQuerySet = False
 
 
+# https://github.com/django/django/blob/main/docs/releases/4.0.txt#L688
+if django.VERSION < (4, 0):
+    from django.conf.urls import include, url
+    from django.utils.encoding import force_text, smart_text
+    from django.utils.translation import ugettext, ugettext_lazy, ugettext_noop, ungettext, ungettext_lazy
+    path = re_path = url
+    force_str, smart_str = force_text, smart_text
+    gettext, gettext_lazy, gettext_noop, ngettext, ngettext_lazy = ugettext, ugettext_lazy, ugettext_noop, ungettext, ungettext_lazy
+elif django.VERSION >= (4, 0):
+    from django.urls import include, path, re_path
+    from django.utils.encoding import force_str, smart_str
+    from django.utils.translation import gettext, gettext_lazy, gettext_noop, ngettext, ngettext_lazy
+    url = re_path
+    force_text, smart_text = force_str, smart_str
+    ugettext, ugettext_lazy, ugettext_noop, ungettext, ungettext_lazy = gettext, gettext_lazy, gettext_noop, ngettext, ngettext_lazy
+
+
 # BaseCommand Series
 class ProxyParser(object):
     """Faux parser object that will ferry our arguments into options."""
